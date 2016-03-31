@@ -1,0 +1,29 @@
+{
+  "name": "things-svc",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "dependencies": {
+    "boom": "^3.1.1",
+    "bucker": "^1.1.1",
+    "extend": "^3.0.0",
+    "hapi": "^12.1.0",
+    "ip": "^1.1.2"
+  },
+  "devDependencies": {
+    "chai": "^1.10.0",
+    "mocha": "^2.1.0",
+    "mocha-bamboo-reporter": "*",
+    "rewire": "^2.5.1",
+    "sinon": "^1.15.4",
+    "sinon-chai": "^2.8.0",
+    "supertest": "^0.15.0",
+    "supertest-as-promised": "^1.0.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/mocha -t 10000 --reporter spec --recursive",
+    "start": "node app.js"
+  },
+  "author": "",
+  "license": "ISC"
+}
