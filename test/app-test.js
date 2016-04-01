@@ -3,13 +3,13 @@
 
     var expect = require('chai').expect;
 
-    var config, api;
+    var config, api, people;
 
     before(function (done) {
-        this.timeout(0);
 
         config = require('../config.js');
         api = require('../app.js');
+        people = require('../resources/people.json').people;
         done();
     });
 
@@ -21,7 +21,6 @@
         describe('Get Health Route', function () {
 
             it('should return OK', function (done) {
-                this.timeout(0);
                 var req = {
                     method: 'GET',
                     url: '/_health'
@@ -32,8 +31,25 @@
                     done();
                 });
             });
-        });
 
+
+        });
+        describe('Get People', function () {
+            it('returns the json', function (done) {
+                this.timeout(1000);
+                var req = {
+                    method: 'GET',
+                    url: '/people'
+                };
+
+                api.inject(req, function (res) {
+                    expect(res.statusCode).to.equal(200);
+                    expect(res.result.people).to.not.be.undefined;
+                    expect(res.result.people.length).to.equal(people.length);
+                    done();
+                });
+            });
+        });
 
     });
 }());

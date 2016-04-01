@@ -38,10 +38,20 @@
             method: 'GET',
             path: '/_health',
             config: {
-                auth: false,
                 handler: function (request, reply) {
 
                     return reply('OK');
+                }
+            }
+        });
+
+        server.route({
+            method: 'GET',
+            path: '/people',
+            config: {
+                handler: function (request, reply) {
+                    var json = require('./resources/people.json');
+                    return reply(json);
                 }
             }
         });
